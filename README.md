@@ -31,13 +31,12 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 - 학습 실습
     - [학습 환경 준비](jetson_inference/prepare_training.md)
     - [분류(classification) 학습](jetson_inference/train_classification.md)
-    - [물체 탐지(object detection) 학습](jetson_inference/train_object_detection.md)
 
 <br>
 
 ## 3일차
 
-- 딥러닝의 이해
+- [딥러닝의 이해](deep_learning_intro.pptx)
 
 <br>
 

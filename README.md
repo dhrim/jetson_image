@@ -11,7 +11,9 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 - 딥러닝의 이해
 - Jetson 셋업
 - Linux 기본 명령어 실습
-- Jetson Inference 프로젝트 설치
+- Jetson-Inference 프로젝트 설치
+- 파일 대상 영상 분류 실습
+- 카메라 입력으로 영상 분류 실습
 
 <br>
 

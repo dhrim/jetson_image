@@ -151,16 +151,14 @@ $ git clone --recursive https://github.com/dusty-nv/jetson-inference
 $ cd jetson-inference
 $ docker/run.sh
 ```
+10여분 소요된다.
 
-실행되고 나면 모델 다운로드 화면이 뜬다.
+소스에서 빌드한 build/aarch64/bin의 내용이 존재한다.
 
-PyTorch 설치 화면은 안뜬다.
-
-마운트된 디렉토리 구조
-
+그리고 docker 컨테이너외부와 파일 공유를 위해 다음의 디렉토리가 마운트 되었다.
 ```bash
 /jetson-inference/
-	data/networks/
+	data/
 	python/
 		training/
 			classification/
@@ -170,6 +168,8 @@ PyTorch 설치 화면은 안뜬다.
 				data/
 				models/
 ```
+외부의 ~/jetson-inference 가 docker 내의 /jetson-inference로 마운트 되었다.
+
 
 <br>
 
@@ -210,6 +210,7 @@ my-recognition.py   # classification 코드 template
 
 # 분류(classification)
 
+
 ## default 모델로 실행
 
 default model로 실행
@@ -228,21 +229,31 @@ $ ./imagenet.py --network=resnet-18 images/jellyfish.jpg images/test/output_jell
 
 모델 다운로드는 tools/download-models.sh로 할 수 있다.
 
-각 모델의 이름은 다음과 같다.
-
-[분류 모델 테이블](jetson_inference%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20c7362a65de6c482aa0b7a2584e8432e9/%E1%84%87%E1%85%AE%E1%86%AB%E1%84%85%E1%85%B2%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%A6%E1%86%AF%20%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%87%E1%85%B3%E1%86%AF%205a0667649d8042d2a39862aae24fbe53.csv)
+model CLI 값
+| Network | CLI argument |
+|---------|--------------|
+| AlexNet | alexnet |
+| GoogleNet | googlenet |
+| GoogleNet-12 | googlenet-12 |
+| ResNet-18 | resnet-18 |
+| ResNet-50 | resnet-50 |
+| ResNet-101 | resnet-101 |
+| ResNet-152 | resnet-152 |
+| VGG-16 | vgg-16 |
+| VGG-19 | vgg-19 |
+| Inception-v4 | inception-v4 |
 
 <br>
 
 ## 카메라에 대하여 실행
 
-[https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-camera-2.md](https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-camera-2.md)
+[https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-camera-2.md](https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-camera-2.md) 기반으로 함
 
 ```bash
 ./imagenet.py csi://0
 ```
 
-docker 실행될 때 V2L2에 /dev/video0이 잡히지만 다음으로 실행하면 안된다.
+장치를 검색하면 /dev/video0으로 잡히지만 다음으로 실행하면 안되고 'csi://0'으로 해야 한다.
 
 ```bash
 ./imagenet.py /dev/video0
@@ -260,65 +271,80 @@ $ ./imagenet.py --network=resnet-18 jellyfish.mkv images/test/jellyfish_resnet18
 
 <br>
 
-## python 코드 작성
+## imagenet.py 내용
 
-[https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-example-python-2.md](https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-example-python-2.md)
-
-작업 폴더 mount
-
-```bash
-# run these commands outside of container
-$ cd ~/
-
-$ mkdir my-recognition-python
-$ cd my-recognition-python
-
-$ touch my-recognition.py
-$ chmod +x my-recognition.py
-
-$ wget https://github.com/dusty-nv/jetson-inference/raw/master/data/images/black_bear.jpg 
-$ wget https://github.com/dusty-nv/jetson-inference/raw/master/data/images/brown_bear.jpg
-$ wget https://github.com/dusty-nv/jetson-inference/raw/master/data/images/polar_bear.jpg
-```
-
-외부의 ~/my_recognition-python 디렉토리를 docker 내의 /my-recognition-python으로 마운트.
-
-```bash
-$ cd ~/jetson-inference
-
-$ docker/run.sh --volume ~/my-recognition-python:/my-recognition-python 
-```
-
-[my-recognition.py](http://my-recognition.py) 내용
-
-```bash
-#!/usr/bin/python3
+```python
 
 import jetson.inference
 import jetson.utils
 
 import argparse
+import sys
+
 
 # parse the command line
-parser = argparse.ArgumentParser()
-parser.add_argument("filename", type=str, help="filename of the image to process")
-parser.add_argument("--network", type=str, default="googlenet", help="model to use, can be:  googlenet, resnet-18, ect.")
-args = parser.parse_args()
+parser = argparse.ArgumentParser(description="Classify a live camera stream using an image recognition DNN.", 
+                                 formatter_class=argparse.RawTextHelpFormatter, epilog=jetson.inference.imageNet.Usage() +
+                                 jetson.utils.videoSource.Usage() + jetson.utils.videoOutput.Usage() + jetson.utils.logUsage())
 
-# 이미지 파일 로딩
-img = jetson.utils.loadImage(args.filename)
+parser.add_argument("input_URI", type=str, default="", nargs='?', help="URI of the input stream")
+parser.add_argument("output_URI", type=str, default="", nargs='?', help="URI of the output stream")
+parser.add_argument("--network", type=str, default="googlenet", help="pre-trained model to load (see below for options)")
+parser.add_argument("--camera", type=str, default="0", help="index of the MIPI CSI camera to use (e.g. CSI camera 0)\nor for VL42 cameras, the /dev/video device to use.\nby default, MIPI CSI camera 0 will be used.")
+parser.add_argument("--width", type=int, default=1280, help="desired width of camera stream (default is 1280 pixels)")
+parser.add_argument("--height", type=int, default=720, help="desired height of camera stream (default is 720 pixels)")
+parser.add_argument('--headless', action='store_true', default=(), help="run without display")
 
-# 모델 로딩
-net = jetson.inference.imageNet(args.network)
+is_headless = ["--headless"] if sys.argv[0].find('console.py') != -1 else [""]
 
-# 분류 실행
-class_idx, confidence = net.Classify(img)
+try:
+	opt = parser.parse_known_args()[0]
+except:
+	print("")
+	parser.print_help()
+	sys.exit(0)
 
-# 카테고리 설명 구하기
-class_desc = net.GetClassDesc(class_idx)
 
-# 결과 출력
-print("image is recognized as '{:s}' (class #{:d}) with {:f}% confidence".format(class_desc, class_idx, confidence * 100))
+# 모델 로딩. default는 'googlenet'
+# load the recognition network
+net = jetson.inference.imageNet(opt.network, sys.argv)
+
+# 파일이든 동영상이든 카메라든 관계 없다.
+# create video sources & outputs
+input = jetson.utils.videoSource(opt.input_URI, argv=sys.argv)
+output = jetson.utils.videoOutput(opt.output_URI, argv=sys.argv+is_headless)
+font = jetson.utils.cudaFont()
+
+# process frames until the user exits
+while True:
+	# capture the next image
+	img = input.Capture()
+
+	# 탐지 결과는 class id와 신뢰도(confidence)이다.
+	# classify the image
+	class_id, confidence = net.Classify(img)
+
+	# class id에 대한 class 이름
+	# find the object description
+	class_desc = net.GetClassDesc(class_id)
+
+	# overlay the result on the image	
+	font.OverlayText(img, img.width, img.height, "{:05.2f}% {:s}".format(confidence * 100, class_desc), 5, 5, font.White, font.Gray40)
+	
+	# render the image
+	output.Render(img)
+
+	# update the title bar
+	output.SetStatus("{:s} | Network {:.0f} FPS".format(net.GetNetworkName(), net.GetNetworkFPS()))
+
+	# print out performance info
+	net.PrintProfilerTimes()
+
+	# 입력이나 출력이 streaming이 아니면 종료한다.
+	# exit on input/output EOS
+	if not input.IsStreaming() or not output.IsStreaming():
+		break
+
 ```
 
 <br>
@@ -328,7 +354,7 @@ print("image is recognized as '{:s}' (class #{:d}) with {:f}% confidence".format
 ## default 모델 사용
 
 ```bash
-./detectnet.py images/peds_0.jpg images/test/output.jpg
+$ ./detectnet.py images/peds_0.jpg images/test/output.jpg
 ```
 
 <br>
@@ -339,7 +365,19 @@ print("image is recognized as '{:s}' (class #{:d}) with {:f}% confidence".format
 $ ./detectnet.py --network=ssd-mobilenet-v2 images/peds_0.jpg images/test/output.jpg
 ```
 
-[물체 탐지 모델 테이블](jetson-inference%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20c7362a65de6c482aa0b7a2584e8432e9/%E1%84%86%E1%85%AE%E1%86%AF%E1%84%8E%E1%85%A6%20%E1%84%90%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%B5%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%A6%E1%86%AF%20%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%87%E1%85%B3%E1%86%AF%20c3491a57d80c46708bbf676759677750.csv)
+model CLI 값
+| model | CLI argument | dataset |
+|-------|--------------|---------|
+| SSD-Mobilenet-v1 | ssd-mobilenet-v1 | 91 (COCO classes) |
+| SSD-Mobilenet-v2 | ssd-mobilenet-v2 | 91 (COCO classes) |
+| SSD-Inception-v2 | ssd-inception-v2 | 91 (COCO classes) |
+| DetectNet-COCO-Dog | coco-dog | dogs |
+| DetectNet-COCO-Bottle | coco-bottle | bottles |
+| DetectNet-COCO-Chair | coco-chair | chairs |
+| DetectNet-COCO-Airplane | coco-airplane | airplanes |
+| ped-100 | pednet | pedestrians |
+| multiped-500 | multiped | pedestrians, luggage |
+| facenet-120 | facenet | faces |
 
 <br>
 
@@ -353,11 +391,9 @@ $ ./detectnet.py "images/peds_*.jpg" images/test/peds_output_%i.jpg
 
 ## 동영상 파일
 
-container 밖에서 파일 준비
-
 ```bash
-$ cp /usr/share/visionworks/sources/data/pedestrians.mp4 data/images/
-$ cp /usr/share/visionworks/sources/data/parking_ssd.avi data/images/
+$ cp /usr/share/visionworks/sources/data/pedestrians.mp4 images/
+$ cp /usr/share/visionworks/sources/data/parking_ssd.avi images/
 ```
 
 ```bash
@@ -401,6 +437,7 @@ except:
 	parser.print_help()
 	sys.exit(0)
 
+# 모델 로딩. default는 'ssd-mobilenet-v2'
 # load the object detection network
 net = jetson.inference.detectNet(opt.network, sys.argv, opt.threshold)
 
@@ -417,7 +454,7 @@ while True:
 	# 탐지 결과는 img에 그려져 있고, 개별 결과는 detections에 담겨 있다.
 	detections = net.Detect(img, overlay=opt.overlay)
 
-	# 콘솔에 축력하고
+	# 콘솔에 출력하고
 	print("detected {:d} objects in image".format(len(detections))
 	for detection in detections:
 		print(detection)
@@ -431,6 +468,7 @@ while True:
 	# print out performance info
 	net.PrintProfilerTimes()
 
+	# 입력이나 출력이 streaming이 아니면 종료한다.
 	# exit on input/output EOS
 	if not input.IsStreaming() or not output.IsStreaming():
 		break
@@ -479,7 +517,20 @@ $ ./segnet.py --visualize=maskimages/city_0.jpg images/test/output.jpg
 $ ./segnet.py --network=fcn-resnet18-cityscapes images/city_0.jpg images/test/output.jpg
 ```
 
-[영역분할 모델 테이블](jetson-inference%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20c7362a65de6c482aa0b7a2584e8432e9/%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%87%E1%85%AE%E1%86%AB%E1%84%92%E1%85%A1%E1%86%AF%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%A6%E1%86%AF%20%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%87%E1%85%B3%E1%86%AF%209cb66142ac654d21aa6557977acb5769.csv)
+model CLI 값
+| Dataset	| Resolution	| CLI Argument	| Accuracy	| FPS	|
+|---------|-------------|---------------|-----------|-----|
+| Cityscapes	| 512x256	| fcn-resnet18-cityscapes-512x256	| 83.3%	| 48 FPS	|
+| Cityscapes	| 1024x512	| fcn-resnet18-cityscapes-1024x512	| 87.3%	| 12 FPS	|
+| Cityscapes	| 2048x1024	| fcn-resnet18-cityscapes-2048x1024	| 89.6%	| 3 FPS	|
+| DeepScene	| 576x320	| fcn-resnet18-deepscene-576x320	| 96.4%	| 26 FPS	|
+| DeepScene	| 864x480	| fcn-resnet18-deepscene-864x480	| 96.9%	| 14 FPS	|
+| Multi-Human	| 512x320	| fcn-resnet18-mhp-512x320	| 86.5%	| 34 FPS	|
+| Multi-Human	| 640x360	| fcn-resnet18-mhp-640x360	| 87.1%	| 23 FPS	|
+| Pascal VOC	| 320x320	| fcn-resnet18-voc-320x320	| 85.9%	| 45 FPS	|
+| Pascal VOC	| 512x320	| fcn-resnet18-voc-512x320	| 88.5%	| 34 FPS	|
+| SUN RGB-D	| 512x400	| fcn-resnet18-sun-512x400	| 64.3%	| 28 FPS	|
+| SUN RGB-D	| 640x512	| fcn-resnet18-sun-640x512	| 65.1%	| 17 FPS	|
 
 <br>
 
@@ -517,7 +568,12 @@ $ ./segnet.py --network=fcn-resnet18-sun "images/room_*.jpg" images/test/room_ou
 ./posenset.py --network=resnet18-body images/human_9.jpg images/test/human_9_pose.jpg
 ```
 
-[포즈추출 모델 테이블](jetson-inference%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20c7362a65de6c482aa0b7a2584e8432e9/%E1%84%91%E1%85%A9%E1%84%8C%E1%85%B3%E1%84%8E%E1%85%AE%E1%84%8E%E1%85%AE%E1%86%AF%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%A6%E1%86%AF%20%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%87%E1%85%B3%E1%86%AF%206186f0640b25481bb6e2a8edea7760d3.csv)
+model CLI 값
+| Model	| CLI argument	| NetworkType enum	| Keypoints |
+|-------|---------------|-------------------|-----------|
+| Pose-ResNet18-Body	| resnet18-body	| RESNET18_BODY	| 18 | 
+| Pose-ResNet18-Hand	| resnet18-hand	| RESNET18_HAND	| 21 | 
+| Pose-DenseNet121-Body	| densenet121-body	| DENSENET121_BODY	| 18 |
 
 <br>
 
@@ -536,6 +592,29 @@ $ ./posenet.py "images/humans_*.jpg" images/test/pose_humans_%i.jpg
 ```
 
 <br>
+
+## posent.py
+
+```python
+...
+
+while True:
+    # capture the next image
+    img = input.Capture()
+
+    # perform pose estimation (with overlay)
+    poses = net.Process(img, overlay=opt.overlay)
+
+    # print the pose results
+    print("detected {:d} objects in image".format(len(poses)))
+
+    for pose in poses:
+        print(pose)
+        print(pose.Keypoints)
+        print('Links', pose.Links)
+
+...
+```
 
 ## 코드로 값 구하기
 
@@ -564,67 +643,6 @@ for pose in poses:
 
 <br>
 
-# 깊이 측정
-
-<br>
-
-## default 모델로
-
-```bash
-./depthnet.py images/room_1.jpg images/test/room_1_depth.jpg
-```
-
-<br>
-
-## 폴더 파일 전체에 대해
-
-```bash
-$ ./depthnet.py "images/room_*.jpg" images/test/room_%i_depth.jpg
-```
-
-<br>
-
-## 카메라 동영상에 대해
-
-```bash
-./depthnet.py csi://0
-```
-
-<br>
-
-## 코드로 값 구하기
-
-```bash
-import jetson.inference
-import jetson.utils
-
-import numpy as np
-
-# 모델 로딩
-net = jetson.inference.depthNet()
-
-# depthNet re-uses the same memory for the depth field,
-# so you only need to do this once (not every frame)
-depth_field = net.GetDepthField()
-
-# cudaToNumpy() will map the depth field cudaImage to numpy
-# this mapping is persistent, so you only need to do it once
-# 요 어레이에 depth가 담긴다.
-depth_numpy = jetson.utils.cudaToNumpy(depth_field)
-
-print(f"depth field resolution is {depth_field.width}x{depth_field.height}, format={depth_field.format})
-
-while True:
-    img = input.Capture()	# assumes you have created an input videoSource stream
-    net.Process(img)
-    jetson.utils.cudaDeviceSynchronize() # wait for GPU to finish processing, so we can use the results on CPU
-	
-    # find the min/max values with numpy
-    min_depth = np.amin(depth_numpy)
-    max_depth = np.amax(depth_numpy)
-```
-
-<br>
 
 # 학습 환경 준비
 

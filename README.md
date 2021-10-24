@@ -35,26 +35,33 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 <br>
 
 ## 3일차
-
-- [딥러닝의 이해](deep_learning_intro.pptx)
+- 학습 실습
+    - [물체 탐지(object detection) 학습](jetson_inference/train_object_detection.md)
+- 커스텀 데이터 학습 실습
+    - [영상 분류](jetson_inference/train_classification_with_custom_data.md)
+    - [물체 탐지](jetson_inference/train_object_detection_with_custom_data.md)
+- 커스텀 데이터 레이블링 실습
+    - TODO
 
 <br>
 
 ## 4일차
 - AWS 학습 환경 소개
-- Jupyter 소개
-- 커스텀 데이터 준비
-- 분류를 위한 레이블링
-- 분류 학습
+- AWS 서버에서 학습
+    - Jupyter 소개
+    - 커스텀 데이터 준비
+    - 분류를 위한 레이블링
+    - 분류 학습
 - Jetson에 업로드와 분류 실행
 
 <br>
 
 ## 5일차
-- 물체 탐지를 위한 레이블링
-- 커스텀 데이터 준비
-- 물체 탐지 학습
-- Jetson에 업로드와 분류 실행
+- AWS 서버에서 물체탐지 학습
+    - 물체 탐지를 위한 레이블링
+    - 커스텀 데이터 준비
+    - 물체 탐지 학습
+- Jetson에 업로드와 물체탐지 실행
 
 <br>
 

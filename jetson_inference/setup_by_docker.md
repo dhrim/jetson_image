@@ -21,7 +21,7 @@ $ git clone --recursive https://github.com/dusty-nv/jetson-inference
 ## docker 실행
 
 ```bash
-$ cd jetson-inference
+$ cd ~/jetson-inference
 $ docker/run.sh
 ```
 10여분 소요된다.

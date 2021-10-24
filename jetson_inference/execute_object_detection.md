@@ -3,6 +3,15 @@
 
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/detectnet-console-2.md 를 기반으로 함.
 
+[docker](jetson_inference/setup_by_docker.md)환경을 사용함.
+
+## 실행 위치로 이동
+```bash
+$ cd /jetson-inference/build/aarch64/bin
+```
+
+<br>
+
 ## default 모델 사용
 
 ```bash

@@ -1,9 +1,18 @@
 # 분류(classification)
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-console-2.md 를 기반으로 함.
 
+[docker](jetson_inference/setup_by_docker.md)환경을 사용함.
+
+## 실행 위치로 이동
+```bash
+$ cd /jetson-inference/build/aarch64/bin
+```
+
+<br>
+
 ## default 모델로 실행
 
-default model로 실행
+default model로 실행s
 
 ```bash
 $ ./imagenet.py images/orange_0.jpg images/test/output_0.jpg

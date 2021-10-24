@@ -1,14 +1,16 @@
 
 # cat_dog 분류 학습
 
-[https://github.com/dusty-nv/jetson-inference/blob/master/docs/pytorch-cat-dog.md](https://github.com/dusty-nv/jetson-inference/blob/master/docs/pytorch-cat-dog.md)을 기반으로 함.
+https://github.com/dusty-nv/jetson-inference/blob/master/docs/pytorch-cat-dog.md 를 기반으로 함.
+
+[docker](jetson_inference/setup_by_docker.md)환경을 사용함.
 
 <br>
 
 ## 데이터 다운로드
 
 ```bash
-$ cd jetson-inference/python/training/classification/data
+$ cd /jetson-inference/python/training/classification/data
 $ wget https://nvidia.box.com/shared/static/o577zd8yp3lmxf5zhm38svrbrv45am3y.gz -O cat_dog.tar.gz
 $ tar xvzf cat_dog.tar.gz
 ```
@@ -38,7 +40,7 @@ dog
 ## 학습 실행
 
 ```bash
-$ cd ~/jetson-inference/python/training/classification
+$ cd /jetson-inference/python/training/classification
 $ python3 train.py --model-dir=models/cat_dog data/cat_dog
 ```
 
@@ -61,7 +63,7 @@ epoch 당 7~8분, 35 epoch에 4시간
 python3 onnx_export.py --model-dir=models/cat_dog
 ```
 
-jetson-inference/python/training/classification/models/cat_dog/ 아래에 
+/jetson-inference/python/training/classification/models/cat_dog/ 아래에 
 
 resnet18.onnx 파일이 생성된다.
 
@@ -130,7 +132,7 @@ dog
 ## 데이터 다운로드
 
 ```bash
-$ cd jetson-inference/python/training/classification/data
+$ cd /jetson-inference/python/training/classification/data
 $ wget https://nvidia.box.com/shared/static/vbsywpw5iqy7r38j78xs0ctalg7jrg79.gz -O PlantCLEF_Subset.tar.gz
 $ tar xvzf PlantCLEF_Subset.tar.gz
 ```
@@ -157,14 +159,14 @@ PlantCLEF_Subset/
 ## 학습 실행
 
 ```bash
-$ cd jetson-inference/python/training/classification
+$ cd /jetson-inference/python/training/classification
 $ python3 train.py --model-dir=models/plants data/PlantCLEF_Subset
 ```
 
 생성된 모델 파일
 
 ```bash
-~/jetson-inference/python/training/classification/models/plants/
+/jetson-inference/python/training/classification/models/plants/
 	checkpoint.pth.tar
 	model_best.pth.tar
 ```
@@ -177,7 +179,7 @@ $ python3 train.py --model-dir=models/plants data/PlantCLEF_Subset
 python3 onnx_export.py --model-dir=model/plants
 ```
 
-jetson-inference/python/training/classification/models/plants/ 아래에 
+/jetson-inference/python/training/classification/models/plants/ 아래에 
 
 resnet18.onnx 파일이 생성된다.
 
@@ -202,7 +204,7 @@ imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output
 	detectnet.py
 	posenet.py
 
-~/jetson-inference/python/training/classification/
+/jetson-inference/python/training/classification/
 	train.py
 	onnx_export.py
 	data/

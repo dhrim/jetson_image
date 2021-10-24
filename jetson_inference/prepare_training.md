@@ -5,6 +5,8 @@
 
 ## 스왑 공간 마운팅
 
+docer 컨테이너 밖에서 다음을 실행
+
 ```bash
 sudo systemctl disable nvzramconfig
 sudo fallocate -l 4G /mnt/4GB.swap
@@ -17,6 +19,8 @@ sudo swapon /mnt/4GB.swap
 ```bash
 /mnt/4GB.swap  none  swap  sw 0  0
 ```
+
+그리고 리부팅.
 
 <br>
 
@@ -41,7 +45,7 @@ $ python
 만약 설치가 안되어 있다면 다음으로 설치.
 
 ```bash
-$ cd jetson-inference/build
+$ cd /jetson-inference/build
 $ ./install-pytorch.sh
 ```
 

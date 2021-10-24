@@ -31,7 +31,8 @@ cat_dog/
 
 labels.txt의 내용은 다음과 같다.
 ```
-
+cat
+dog
 ```
 
 ## 학습 실행

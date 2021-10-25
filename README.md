@@ -41,7 +41,7 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
     - [영상 분류](jetson_inference/train_classification_with_custom_data.md)
     - [물체 탐지](jetson_inference/train_object_detection_with_custom_data.md)
 - 커스텀 데이터 레이블링 실습
-    - TODO
+- 딥러닝의 이해
 
 <br>
 

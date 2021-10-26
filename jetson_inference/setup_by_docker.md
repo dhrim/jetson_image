@@ -63,7 +63,7 @@ run.sh를 실행하면 docker 컨테이너 안에서 root 유저로 실행된다
 
 ```bash
 $ cd build/aarch64/bin
-$ ./imagenet images/jellyfish.jpg images/test/result.jpg
+$ ./imagenet-camera.py
 ```
 
 <br>

@@ -12,7 +12,7 @@ $ cd /jetson-inference/build/aarch64/bin
 
 ## default 모델로 실행
 
-default model로 실행s
+default model로 실행
 
 ```bash
 $ ./imagenet.py images/orange_0.jpg images/test/output_0.jpg

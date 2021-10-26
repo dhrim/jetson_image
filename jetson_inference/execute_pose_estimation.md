@@ -15,7 +15,7 @@ $ cd /jetson-inference/build/aarch64/bin
 ## default 모델로
 
 ```bash
-./posenset.py images/human_9.jpg images/test/human_9_pose.jpg
+./posenet.py images/human_9.jpg images/test/human_9_pose.jpg
 ```
 
 <br>

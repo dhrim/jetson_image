@@ -45,7 +45,7 @@ $ ./segnet.py --network=fcn-resnet18-sun "images/room_*.jpg" images/test/room_ou
 ## 카메라 동영상에 대해
 
 ```bash
-~ ./senet.py csi://0
+$ ./senet.py csi://0
 ```
 
 <br>

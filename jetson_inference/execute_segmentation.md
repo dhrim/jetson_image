@@ -11,18 +11,10 @@ $ cd /jetson-inference/build/aarch64/bin
 
 <br>
 
-## default 모델 사용
-
-```bash
-$ ./segnet.py --alpha=200 --visualize=mask images/city_0.jpg images/test/output.jpg
-```
-
-<br>
-
 ## 특정 모델 사용
 
 ```bash
-$ ./segnet.py --network=fcn-resnet18-cityscapes --alpha=200 --visualize=mask images/city_0.jpg images/test/output.jpg
+$ ./segnet.py --network=fcn-resnet18-cityscapes images/city_0.jpg images/test/output.jpg
 ```
 
 model CLI 값

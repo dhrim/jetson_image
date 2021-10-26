@@ -144,25 +144,6 @@ while display.IsStreaming():
 	jetson.utils.cudaOverlay(buffers.mask, buffers.composite, buffers.overlay.width, 0)
 
 	output.Render(buffers.output)
-
-
 ```
 
 <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## segnet.py
-

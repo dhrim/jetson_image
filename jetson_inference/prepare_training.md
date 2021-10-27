@@ -17,7 +17,9 @@ $ sudo swapon /mnt/4GB.swap
 그리고 다음을 실행하여 /etc/fstab에 다음줄을 추가
 
 ```
-echo "/mnt/4GB.swap  none  swap  sw 0  0" >> /etc/fstab
+$ sudo chmod 666 /etc/fstab 
+$ sudo echo "/mnt/4GB.swap  none  swap  sw 0  0" >> /etc/fstab
+$ sudo chmod 644 /etc/fstab
 ```
 
 그리고 리부팅.

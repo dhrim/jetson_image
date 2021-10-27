@@ -142,7 +142,7 @@ Jetson에서 웹브라우저를 실행하고 AWS 서버의 Jupyter에 접속한�
 
 jetson-inference / python / training / classification / models / cat_dog 로 이동.
 
-model.onnx를 체크.
+resnet18.onnx를 체크.
 
 상단의 'Download'를 클릭.
 
@@ -150,7 +150,7 @@ model.onnx를 체크.
 
 <br>
 
-탐색기를 열어서 다운로드 위치의 model.onnx를 
+탐색기를 열어서 다운로드 위치의 resnet18.onnx를 
 
 jetson-inference / python / training / classification / models / cat_dog 로 카피.
 
@@ -169,12 +169,13 @@ $ tar xvzf cat_dog.tar.gz
 ## 실행
 
 ```bash
-$ cd ~/jetson-inference/python/training/classification
+$ cd /jetson-inference/python/training/classification
+$ mkdir -p data/cat_dog/result
 
 $ MODEL=models/cat_dog
 $ DATASET=data/cat_dog
 
-$ imagenet.py --model=$MODEL/model.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cat/01.jpg data/cat.jpg
+$ imagenet.py --model=models/cat_dog/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=data/cat_dog/labels.txt data/cat_dog/test/cat/01.jpg data/cat_dog/result/cat01.jpg
 ```
 
 여기서 실행되는 imagenet.py는 /usr/local/bin/imagenet.py이다.

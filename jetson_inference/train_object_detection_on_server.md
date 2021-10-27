@@ -150,7 +150,9 @@ ssd-mobilenet.onnx 파일이 생성된다.
 
 <br>
 
-# 모델 다운로드
+# 물체 탐지 실행
+
+## 모델 다운로드
 
 이 아래는 Jetson에서 실행한다. [docker](setup_by_docker.md)환경을 사용함.
 
@@ -181,8 +183,19 @@ labels.txt를 체크
 
 jetson-inference / python / training / detection / ssd / models / fruit 로 카피.
 
+<br>
 
-## 물체 탐지 실행
+## 데이터 다운로드
+
+```
+$ cd /jetson-inference/python/training/detection/ssd/data
+$ wget https://github.com/dhrim/jetson_image/raw/master/data/fruit.tar.gz
+$ tar xvfz fruit.tar.gz
+```
+
+
+
+## 실행
 
 ```bash
 $ mkdir -p data/fruit/result

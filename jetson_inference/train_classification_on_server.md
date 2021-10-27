@@ -130,7 +130,9 @@ resnet18.onnx 파일이 생성된다.
 
 <br>
 
-# 모델 다운로드
+# 분류 실행
+
+## 모델 다운로드
 
 이 아래는 Jetson에서 실행한다. [docker](setup_by_docker.md)환경을 사용함.
 
@@ -152,8 +154,19 @@ model.onnx를 체크.
 
 jetson-inference / python / training / classification / models / cat_dog 로 카피.
 
+<br>
 
-## 분류 실행
+## 데이터 다운로드
+
+```bash
+$ cd /jetson-inference/python/training/classification/data
+$ wget https://nvidia.box.com/shared/static/o577zd8yp3lmxf5zhm38svrbrv45am3y.gz -O cat_dog.tar.gz
+$ tar xvzf cat_dog.tar.gz
+```
+
+<br>
+
+## 실행
 
 ```bash
 $ cd ~/jetson-inference/python/training/classification

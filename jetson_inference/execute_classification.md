@@ -1,7 +1,7 @@
 # 분류(classification)
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-console-2.md 를 기반으로 함.
 
-[docker](jetson_inference/setup_by_docker.md)환경을 사용함.
+[docker](setup_by_docker.md)환경을 사용함.
 
 ## 실행 위치로 이동
 ```bash

@@ -64,34 +64,55 @@ $ cd jetson-inference
 <br>
 
 
-# 데이터 다운로드
+
+## 필요 라이브러리 설치
 
 ```bash
-$ cd ~/jetson-inference/python/training/classification/data
-$ wget https://nvidia.box.com/shared/static/o577zd8yp3lmxf5zhm38svrbrv45am3y.gz -O cat_dog.tar.gz
-$ tar xvzf cat_dog.tar.gz
+$ cd ~/jetson-inference/python/training/detection/ssd
+$ pip3 install -v -r requirements.txt
+```
+
+<br>
+
+## base 모델 다운로드
+
+```
+$ cd ~/jetson-inference/python/training/detection/ssd
+$ wget https://nvidia.box.com/shared/static/djf5w54rjvpqocsiztzaandq1m3avr7c.pth -O models/mobilenet-v1-ssd-mp-0_675.pth
+
+```
+<br>
+
+# 데이터 다운로드
+
+```
+$ cd ~/jetson-inference/python/training/detection/ssd/data
+$ wget https://github.com/dhrim/jetson_image/raw/master/data/fruit.tar.gz
+$ tar xvfz fruit.tar.gz
 ```
 
 파일 구조는 다음과 같다.
 
 ```bash
-cat_dog/
-	labels.txt
-	train/
-		cat/
-		dog/
-	val/
-		cat/
-		dog/
-	test/
-		cat/
-		dog/
-```
+data/fruit
+    train/
+        xxx.jpg
+        ...
+    validation/
+        xxx.jpg
+        ...
+    test/
+        xxx.jpg
+        ...
+    class-descriptions-boxable.csv   # 601개 전체 클래스 이름
+    sub-train-annotation-bbox.csv       # 사용할 train 서브데이터 레이블링
+    sub-validation-annotation-bbox.csv  # 사용할 validation 서브데이터 레이블링
+    sub-test-annotation-bbox.csv        # 사용할 test 서브데이터 레이블링
+    
+    train-annotations-bbox.csv          # 전체 데이터. 사용 안함
+    validation-annotations-bbox.csv     # 전체 데이터. 사용 안함
+    test-annotations-bbox.csv           # 전체 데이터. 사용 안함
 
-labels.txt의 내용은 다음과 같다.
-```
-cat
-dog
 ```
 
 <br>
@@ -101,19 +122,19 @@ dog
 ## 학습 실행
 
 ```bash
-$ cd ~/jetson-inference/python/training/classification
-$ python3 train.py --model-dir=models/cat_dog data/cat_dog
+$ cd ~/jetson-inference/python/training/detection/ssd/
+$ python3 train_ssd.py --data=data/fruit --model-dir=models/fruit --batch-size=4 --epochs=30
 ```
 
-epoch 당 20초, 35 epoch에 12분 소여된다.
+epoch 당 8초, 35 epoch에 5분 소요된다.
 
 모델 저장 위치는 
 
 ```bash
-~/jetson-inference/python/training/classification/
-	models/cat_dog/
-		checkpoint.pth.tar
-		model_best.pth.tar
+~/jetson-inference/python/training/detection/ssd/
+    models/fruit/
+	    labels.txt
+	    mb1-ssd-Epoch-xx-Loss-x.xxx.pth
 ```
 
 <br>
@@ -121,12 +142,11 @@ epoch 당 20초, 35 epoch에 12분 소여된다.
 ## ONNX 포멧으로 converting
 
 ```bash
-$ python3 onnx_export.py --model-dir=models/cat_dog
+$ python3 onnx_export.py --model-dir=models/fruit
 ```
 
-~/jetson-inference/python/training/classification/models/cat_dog/ 아래에 
-
-resnet18.onnx 파일이 생성된다.
+~/jetson-inference/python/training/detection/models/fruit/ 아래에 
+ssd-mobilenet.onnx 파일이 생성된다.
 
 <br>
 
@@ -138,33 +158,36 @@ resnet18.onnx 파일이 생성된다.
 
 Jetson에서 웹브라우저를 실행하고 AWS 서버의 Jupyter에 접속한다.
 
-jetson-inference / python / training / classification / models / cat_dog 로 이동.
+jetson-inference / python / training / detection / ssd / models / fruit 로 이동.
 
-model.onnx를 체크.
+ssd-mobilenet.onnx를 체크.
 
 상단의 'Download'를 클릭.
 
-![download_onnx.png](images/download_onnx.png)
+![download_detection_onnx.png](images/download_detection_onnx.png)
 
 <br>
 
-탐색기를 열어서 다운로드 위치의 model.onnx를 
+labels.txt를 체크
 
-jetson-inference / python / training / classification / models / cat_dog 로 카피.
+상단의 'Download'를 클릭.
+
+![download_labels.png](images/download_labels.png)
 
 
-## 분류 실행
+<br>
+
+탐색기를 열어서 다운로드 위치의 model.onnx와 labels.txt를 
+
+jetson-inference / python / training / detection / ssd / models / fruit 로 카피.
+
+
+## 물체 탐지 실행
 
 ```bash
-$ cd ~/jetson-inference/python/training/classification
-
-$ MODEL=models/cat_dog
-$ DATASET=data/cat_dog
-
-$ imagenet.py --model=$MODEL/model.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cat/01.jpg data/cat.jpg
+$ mkdir -p data/fruit/result
+$ detectnet.py --model=models/fruit/ssd-mobilenet.onnx --labels=models/fruit/labels.txt --input-blob=input_0 --output-cvg=scores --output-bbox=boxes data/fruit/test/ee8*.jpg data/fruit/result/result_%i.jpg
 ```
-
-여기서 실행되는 imagenet.py는 /usr/local/bin/imagenet.py이다.
 
 <br>
 

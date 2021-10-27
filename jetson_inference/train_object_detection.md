@@ -3,7 +3,7 @@
 
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/pytorch-ssd.md 를 기반으로 함.
 
-[docker](jetson_inference/setup_by_docker.md)환경을 사용함.
+[docker](setup_by_docker.md)환경을 사용함.
 
 <br>
 
@@ -67,9 +67,10 @@ epoch 당 7~8분, 35 epoch에 4시간
 모델 저장 위치는 
 
 ```bash
-/jetson-inference/python/training/detection/ssd/models/fruit/
-	labels.txt
-	mb1-ssd-Epoch-xx-Loss-x.xxx.pth
+/jetson-inference/python/training/detection/ssd/
+	models/fruit/
+		labels.txt
+		mb1-ssd-Epoch-xx-Loss-x.xxx.pth
 ```
 
 <br>

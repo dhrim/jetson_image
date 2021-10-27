@@ -3,7 +3,7 @@
 
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/pytorch-cat-dog.md 를 기반으로 함.
 
-[docker](jetson_inference/setup_by_docker.md)환경을 사용함.
+[docker](setup_by_docker.md)환경을 사용함.
 
 <br>
 

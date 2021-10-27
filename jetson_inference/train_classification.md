@@ -143,7 +143,6 @@ $ tar xvzf PlantCLEF_Subset.tar.gz
 ```bash
 PlantCLEF_Subset/
 	labels.txt
-	test/
 	train/
 		ash/
 		beech/
@@ -152,7 +151,8 @@ PlantCLEF_Subset/
 		ash/
 		beech/
 		...
-
+	test/
+		...
 ```
 
 <br>

@@ -178,7 +178,7 @@ $ python3 train.py --model-dir=models/plants data/PlantCLEF_Subset
 ## ONNX 포멧으로 converting
 
 ```bash
-$ python3 onnx_export.py --model-dir=model/plants
+$ python3 onnx_export.py --model-dir=models/plants
 ```
 
 /jetson-inference/python/training/classification/models/plants/ 아래에 

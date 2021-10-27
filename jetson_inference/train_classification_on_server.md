@@ -172,9 +172,6 @@ $ tar xvzf cat_dog.tar.gz
 $ cd /jetson-inference/python/training/classification
 $ mkdir -p data/cat_dog/result
 
-$ MODEL=models/cat_dog
-$ DATASET=data/cat_dog
-
 $ imagenet.py --model=models/cat_dog/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=data/cat_dog/labels.txt data/cat_dog/test/cat/01.jpg data/cat_dog/result/cat01.jpg
 ```
 

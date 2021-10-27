@@ -73,10 +73,10 @@ resnet18.onnx 파일이 생성된다.
 ## 분류 실행
 
 ```bash
-$ NET=models/cat_dog
+$ MODEL=models/cat_dog
 $ DATASET=data/cat_dog
 
-$ imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cat/01.jpg data/cat.jpg
+$ imagenet.py --model=$MODEL/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cat/01.jpg data/cat.jpg
 ```
 
 여기서 실행되는 imagenet.py는 /usr/local/bin/imagenet.py이다.
@@ -190,10 +190,10 @@ resnet18.onnx 파일이 생성된다.
 ## 분류 실행
 
 ```bash
-$ NET=models/plants
+$ MODEL=models/plants
 $ DATASET=data/PlantCLEF_Subset
 
-$ imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cattail.jpg data/cattail.jpg
+$ imagenet.py --model=$MODEL/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cattail.jpg data/cattail.jpg
 ```
 
 <br>

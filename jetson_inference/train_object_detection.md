@@ -128,7 +128,7 @@ data/fruit/result 밑에 탐지 결과 파일들이 생성된다.
 			fruit/
 				labels.txt
 				mb1-ssd-Epoch-xx-Loss-x.xxx.pth			
-			ssd-mobilenet.onnx
+				ssd-mobilenet.onnx
 ```
 
 <br>

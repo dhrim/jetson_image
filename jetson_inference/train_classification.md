@@ -50,9 +50,10 @@ epoch 당 7~8분, 35 epoch에 4시간
 
 ```bash
 # docker 밖에서 
-~/jetson-inference/python/training/classification/models/cat_dog/
-	checkpoint.pth.tar
-	model_best.pth.tar
+~/jetson-inference/python/training/classification/
+	models/cat_dog/
+		checkpoint.pth.tar
+		model_best.pth.tar
 ```
 
 <br>
@@ -60,7 +61,7 @@ epoch 당 7~8분, 35 epoch에 4시간
 ## ONNX 포멧으로 converting
 
 ```bash
-python3 onnx_export.py --model-dir=models/cat_dog
+$ python3 onnx_export.py --model-dir=models/cat_dog
 ```
 
 /jetson-inference/python/training/classification/models/cat_dog/ 아래에 
@@ -72,10 +73,10 @@ resnet18.onnx 파일이 생성된다.
 ## 분류 실행
 
 ```bash
-NET=models/cat_dog
-DATASET=data/cat_dog
+$ NET=models/cat_dog
+$ DATASET=data/cat_dog
 
-imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cat/01.jpg cat.jpg
+$ imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cat/01.jpg data/cat.jpg
 ```
 
 여기서 실행되는 imagenet.py는 /usr/local/bin/imagenet.py이다.
@@ -166,9 +167,10 @@ $ python3 train.py --model-dir=models/plants data/PlantCLEF_Subset
 생성된 모델 파일
 
 ```bash
-/jetson-inference/python/training/classification/models/plants/
-	checkpoint.pth.tar
-	model_best.pth.tar
+/jetson-inference/python/training/classification/
+	models/plants/
+		checkpoint.pth.tar
+		model_best.pth.tar
 ```
 
 <br>
@@ -176,7 +178,7 @@ $ python3 train.py --model-dir=models/plants data/PlantCLEF_Subset
 ## ONNX 포멧으로 converting
 
 ```bash
-python3 onnx_export.py --model-dir=model/plants
+$ python3 onnx_export.py --model-dir=model/plants
 ```
 
 /jetson-inference/python/training/classification/models/plants/ 아래에 
@@ -188,10 +190,10 @@ resnet18.onnx 파일이 생성된다.
 ## 분류 실행
 
 ```bash
-NET=models/plants
-DATASET=data/PlantCLEF_Subset
+$ NET=models/plants
+$ DATASET=data/PlantCLEF_Subset
 
-imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cattail.jpg cattail.jpg
+$ imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cattail.jpg data/cattail.jpg
 ```
 
 <br>

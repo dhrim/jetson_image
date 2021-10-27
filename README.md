@@ -47,8 +47,10 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 
 ## 4일차
 - AWS 학습 환경 소개, Jupyter 소개
-- AWS 서버에서 분류 학습 : [실습 노트북](jetson_inference/train_classification_on_server.ipynb)
-- [Jetson에 업로드와 분류 실행](jetson_inference/execute_classification_by_uploaded_model.md)
+- [AWS 서버에서 분류 학습](jetson_inference/train_classification_on_server.md)
+- AWS 서버에서 Keras 코드로 분류 학습
+    - [노트북](jetson_inference/train_classification_on_server_on_keras.ipynb)
+    - [Jetson에 업로드와 분류 실행](jetson_inference/execute_classification_by_uploaded_model.md)
 
 <br>
 

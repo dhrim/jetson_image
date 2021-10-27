@@ -22,6 +22,11 @@ $ sudo echo "/mnt/4GB.swap  none  swap  sw 0  0" >> /etc/fstab
 $ sudo chmod 644 /etc/fstab
 ```
 
+다음을 실행하여 /etc/fstab 파일에 위 사항이 반영되었는지 확인한다.
+```
+$ cat /etc/fstab
+```
+
 그리고 리부팅.
 
 <br>

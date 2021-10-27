@@ -8,13 +8,13 @@
 docer 컨테이너 밖에서 다음을 실행
 
 ```bash
-sudo systemctl disable nvzramconfig
-sudo fallocate -l 4G /mnt/4GB.swap
-sudo mkswap /mnt/4GB.swap
-sudo swapon /mnt/4GB.swap
+$ sudo systemctl disable nvzramconfig
+$ sudo fallocate -l 4G /mnt/4GB.swap
+$ sudo mkswap /mnt/4GB.swap
+$ sudo swapon /mnt/4GB.swap
 ```
 
-/etc/tstab에 다음줄을 추가
+/etc/fstab에 다음줄을 추가
 
 ```bash
 /mnt/4GB.swap  none  swap  sw 0  0

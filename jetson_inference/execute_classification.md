@@ -1,3 +1,9 @@
+
+-----
+# 영상 분류 실습
+<br><br><br><br>
+
+
 # 분류(classification)
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-console-2.md 를 기반으로 함.
 

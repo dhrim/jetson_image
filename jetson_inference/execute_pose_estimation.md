@@ -1,4 +1,9 @@
 
+-----
+# 포즈 추출 실습
+<br><br><br><br>
+
+
 # 포즈추출(pose estimation)
 
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/posenet.md 를 기반으로 함.

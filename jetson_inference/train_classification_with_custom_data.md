@@ -1,3 +1,9 @@
+
+-----
+# 커스텀 데이터 분류 학습 실습
+<br><br><br><br>
+
+
 # 분류 데이터 새로운 데이터 생성
 
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/pytorch-collect.md 를 기반으로 함.

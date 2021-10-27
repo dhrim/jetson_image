@@ -1,3 +1,9 @@
+
+-----
+# 영역 분할 실습
+<br><br><br><br>
+
+
 # 영역분할(segmentation)
 
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/segnet-console-2.md 를 기반으로 함.

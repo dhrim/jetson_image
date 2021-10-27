@@ -1,4 +1,9 @@
 
+-----
+# 물체 탐지 실습
+<br><br><br><br>
+
+
 # 물체탐지(object detection)
 
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/detectnet-console-2.md 를 기반으로 함.

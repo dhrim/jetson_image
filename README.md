@@ -52,13 +52,14 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
     - [노트북](jetson_inference/train_classification_on_server_on_keras.ipynb)
     - [Jetson에 업로드와 분류 실행](jetson_inference/execute_classification_by_uploaded_model.md)
 - 커스텀 데이터 AWS 서버에서 분류 학습 : [데이터](data/flowers.zip)
+
 <br>
 
 ## 5일차
 - [AWS 서버에서 물체 탐지 학습](jetson_inference/train_object_detection_on_server.md)
 - 커스텀 데이터 AWS 서버에서 물체 탐지 학습
     - [데이터](data/????.zip)
-    - [물체 탐지 레이블링](prepparing_object_detection_label.md)
+    - [물체 탐지 레이블링](jetson_inference/prepparing_object_detection_label.md)
 
 
 <br>

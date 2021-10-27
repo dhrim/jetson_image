@@ -14,10 +14,10 @@ $ sudo mkswap /mnt/4GB.swap
 $ sudo swapon /mnt/4GB.swap
 ```
 
-/etc/fstab에 다음줄을 추가
+그리고 다음을 실행하여 /etc/fstab에 다음줄을 추가
 
-```bash
-/mnt/4GB.swap  none  swap  sw 0  0
+```
+echo "/mnt/4GB.swap  none  swap  sw 0  0" >> /etc/fstab
 ```
 
 그리고 리부팅.

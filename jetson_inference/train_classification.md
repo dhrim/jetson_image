@@ -75,7 +75,7 @@ resnet18.onnx 파일이 생성된다.
 NET=models/cat_dog
 DATASET=data/cat_dog
 
-imagenet.py --model=$NET/cat_dog/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cat/01.jpg cat.jpg
+imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cat/01.jpg cat.jpg
 ```
 
 여기서 실행되는 imagenet.py는 /usr/local/bin/imagenet.py이다.

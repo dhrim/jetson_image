@@ -90,7 +90,7 @@ container 밖에서는 ~/jetson-inference/python/training/detection/models/fruit
 ## 탐지 실행
 
 ```bash
-detectnet.py --model=models/fruit/ssd-mobilenet.onnx --labels=models/fruit/labels.txt --input-blob=input_0 --output-cvg=scores --output-bbox=boxes data/fruit/test/ee*.jpg data/fruit/result/result_%i.jpg
+$ detectnet.py --model=models/fruit/ssd-mobilenet.onnx --labels=models/fruit/labels.txt --input-blob=input_0 --output-cvg=scores --output-bbox=boxes data/fruit/test/ee8*.jpg data/fruit/result/result_%i.jpg
 ```
 
 data/fruit/result 밑에 탐지 결과 파일들이 생성된다.

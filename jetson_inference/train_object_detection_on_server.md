@@ -1,6 +1,6 @@
 
 -----
-# Jetson-Inference 프로젝트 설치 - 소스에서 빌드
+# AWS 서버에서 물체 탐지 학습
 <br><br><br><br>
 
 

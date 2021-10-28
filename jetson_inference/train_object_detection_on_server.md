@@ -12,9 +12,9 @@
 각자 부여 받은 AWS의 jupyter로 접속. 본 문서에서는 http://176.32.69.21:9000 를 기준으로 한다.
 
 상단 우측의 'new'를 클릭하고 'Terminal'을 선택
-    ![untiled][images/jupyter_home.png]
+![untiled](images/jupyter_home.png)
 
-    ![untiled][images/terminal_button.png]
+![untiled](images/terminal_button.png)
 
 <br>
 

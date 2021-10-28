@@ -38,7 +38,7 @@ $ camera-capture
 $ camera-capture csi://0
 ```
 
-![Untitled](jetson-inference%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20c7362a65de6c482aa0b7a2584e8432e9/Untitled%202.png)
+![Untitled](images/image3.png)
 
 <br>
 

@@ -14,6 +14,8 @@
 상단 우측의 'new'를 클릭하고 'Terminal'을 선택
 ![untiled](images/jupyter_home.png)
 
+<br>
+
 ![untiled](images/terminal_button.png)
 
 <br>

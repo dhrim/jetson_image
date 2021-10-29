@@ -23,8 +23,14 @@ aarch64/bin/ 혹은  tools/ 혹은 /usr/local/bin/ 에 camera-capture가 있다.
 ```bash
 $ cd /jetson-inference/python/training/classification/data
 $ mkdir thumb
-$ echo "UP
-DOWN" > thumb/labels.txt
+$ echo "UP" >>  thumb/labels.txt
+$ echo "DOWN" >>  thumb/labels.txt
+```
+
+```
+$ cat thumb/labels.txt
+UP
+DOWN
 ```
 
 <br>

@@ -60,5 +60,11 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 
 <br>
 
+# 기타
+
+- 흥미로운 딥러닝 결과들 [some_interesting_deep_learning.pptx](some_interesting_deep_learning.pptx)
+
+<br>
+
 # 교육에 필요한 장비
 [requirements.md](requirements.md)

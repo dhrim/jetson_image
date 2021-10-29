@@ -53,7 +53,7 @@ $ cd ~/jetson-inference
 $ docker/run.sh
 ```
 
-다음을 실행.ㄴ
+다음을 실행.
 ```
 $ cd build/aarch64/bin
 

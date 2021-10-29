@@ -46,13 +46,14 @@ Home > jetson-inference > data > images > test에 카피한다.
 
 # 실행
 
-docker를 실행시킨 터미널에서 다음을 실행
+터미널창을 열고 다음을 실행하여 도커를 실행.
 
 ```
 $ cd ~/jetson-inference
 $ docker/run.sh
 ```
 
+다음을 실행.ㄴ
 ```
 $ cd build/aarch64/bin
 

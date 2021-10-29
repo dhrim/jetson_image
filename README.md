@@ -49,8 +49,8 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 
 ## 5일차
 - 카메라 캡쳐한 데이터 학습
-    - [영상 분류](jetson_inference/train_classification_with_custom_data.md)
-    - [물체 탐지](jetson_inference/train_object_detection_with_custom_data.md)
+    - [영상 분류](jetson_inference/train_classification_thumb_up_down.md)
+    - 물체 탐지 : TODO
 - Keras 영상 분류 이해
     - [IRIS 분류](keras/dnn_iris_classification.ipynb)
     - [MNIST 분류](keras/dnn_mnist.ipynb)

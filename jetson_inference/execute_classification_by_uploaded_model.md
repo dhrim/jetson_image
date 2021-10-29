@@ -49,6 +49,13 @@ Home > jetson-inference > data > images > test에 카피한다.
 docker를 실행시킨 터미널에서 다음을 실행
 
 ```
+$ cd ~/jetson-inference
+$ docker/run.sh
+```
+
+```
+$ cd build/aarch64/bin
+
 $ cp images/test/model.onnx ./
 $ cp images/test/labels.txt ./
 

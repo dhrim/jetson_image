@@ -68,7 +68,7 @@ $ cp /usr/share/visionworks/sources/data/parking.avi images/
 ```bash
 $ ./detectnet.py images/pedestrians.mp4 images/test/pedestrians_ssd.mp4
 
-$ ./detectnet.py images/parking.avi images/test/parking.avi
+$ ./detectnet.py images/parking.avi images/test/parking_ssd.avi
 ```
 
 <br>

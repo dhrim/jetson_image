@@ -57,11 +57,14 @@ $ ./detectnet.py "images/peds_*.jpg" images/test/peds_output_%i.jpg
 
 ## 동영상 파일
 
+도커 밖에서 실행
 ```bash
+$ cd ~/jetson-inference/data
 $ cp /usr/share/visionworks/sources/data/pedestrians.mp4 images/
 $ cp /usr/share/visionworks/sources/data/parking_ssd.avi images/
 ```
 
+도커 안에서 실행
 ```bash
 $ ./detectnet.py images/pedestrians.mp4 images/test/pedestrians_ssd.mp4
 

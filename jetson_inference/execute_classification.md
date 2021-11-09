@@ -55,13 +55,13 @@ model CLI 값
 https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-camera-2.md 를 기반으로 함.
 
 ```bash
-./imagenet.py csi://0
+$ ./imagenet.py csi://0
 ```
 
 장치를 검색하면 /dev/video0으로 잡히지만 다음으로 실행하면 안되고 'csi://0'으로 해야 한다.
 
 ```bash
-./imagenet.py /dev/video0
+$ ./imagenet.py /dev/video0
 ```
 
 <br>

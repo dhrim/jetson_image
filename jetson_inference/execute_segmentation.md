@@ -17,6 +17,14 @@ $ cd /jetson-inference/build/aarch64/bin
 
 <br>
 
+## default 모델로
+
+```bash
+$ ./segnet.py images/city_0.jpg images/test/output.jpg
+```
+
+<br>
+
 ## 특정 모델 사용
 
 ```bash

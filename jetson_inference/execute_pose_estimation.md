@@ -20,7 +20,7 @@ $ cd /jetson-inference/build/aarch64/bin
 ## default 모델로
 
 ```bash
-$ ./posenet.py images/humans_9.jpg images/test/human_9_pose.jpg
+$ ./posenet.py images/humans_1.jpg images/test/human_1_pose.jpg
 ```
 
 <br>
@@ -28,7 +28,7 @@ $ ./posenet.py images/humans_9.jpg images/test/human_9_pose.jpg
 ## 특정 모델로
 
 ```bash
-$ ./posenet.py --network=resnet18-body images/humans_9.jpg images/test/human_9_pose.jpg
+$ ./posenet.py --network=resnet18-body images/humans_1.jpg images/test/human_1_pose.jpg
 ```
 
 model CLI 값

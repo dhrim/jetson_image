@@ -1,15 +1,11 @@
 
------
-# 학습  환경 준비
-<br><br><br><br>
-
 # 학습 환경 준비
 
 <br>
 
 ## 스왑 공간 마운팅
 
-docer 컨테이너 밖에서 다음을 실행
+docker 컨테이너 밖에서 다음을 실행
 
 ```bash
 $ sudo systemctl disable nvzramconfig

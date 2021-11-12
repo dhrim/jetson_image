@@ -46,10 +46,6 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 <br>
 
 ## 4일차
-- 자연어 처리 실습
-    - 영문 영화 평가 데이터 IMDB 분류 : [rnn_text_classification.ipynb](./deep_learning/rnn_text_classification.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/cau_2021/blob/master/material/deep_learning/rnn_text_classification.ipynb)
-    - 한글 영화 평가 데이터 분류 : [korean_word_sequence_classification.ipynb](./deep_learning/korean_word_sequence_classification.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/cau_2021/blob/master/material/deep_learning/korean_word_sequence_classification.ipynb)
-
 
 - AWS 학습 환경 소개, Jupyter 소개
 - [AWS 서버에서 분류 학습](jetson_inference/train_classification_on_server.md)
@@ -61,10 +57,6 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 ## 5일차
 - 카메라 캡쳐한 데이터 학습
     - [영상 분류](jetson_inference/train_classification_thumb_up_down.md)
-    - 물체 탐지 : TODO
-- Keras 영상 분류 이해
-    - [IRIS 분류](keras/dnn_iris_classification.ipynb)
-    - [MNIST 분류](keras/dnn_mnist.ipynb)
 - AWS 서버에서 Keras 코드로 분류 학습
     - [노트북](jetson_inference/train_classification_on_server_on_keras.ipynb)
     - [Jetson에 업로드와 분류 실행](jetson_inference/execute_classification_by_uploaded_model.md)
@@ -74,6 +66,9 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 # 기타
 
 - 흥미로운 딥러닝 결과들 [some_interesting_deep_learning.pptx](some_interesting_deep_learning.pptx)
+- 영문 영화 평가 데이터 IMDB 분류 : [rnn_text_classification.ipynb](./deep_learning/rnn_text_classification.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/cau_2021/blob/master/material/deep_learning/rnn_text_classification.ipynb)
+- 한글 영화 평가 데이터 분류 : [korean_word_sequence_classification.ipynb](./deep_learning/korean_word_sequence_classification.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/cau_2021/blob/master/material/deep_learning/korean_word_sequence_classification.ipynb)
+
 
 <br>
 

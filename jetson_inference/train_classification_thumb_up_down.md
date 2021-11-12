@@ -69,6 +69,7 @@ $ camera-capture csi://0
 - Current Class : 'UP'
 
 엄지 손가락을 올리고 버튼 'Capture (space)'를 클릭한다. 클릭하는데로 jpg파일이 생성된다.
+100개 캡쳐 한다.
 
 <br>
 
@@ -78,6 +79,11 @@ $ camera-capture csi://0
 - Current Class : 'DOWN'
 
 엄지 손가락을 내리고 버튼 'Capture (space)'를 클릭한다. 클릭하는데로 jpg파일이 생성된다.
+100개 챕쳐 한다.
+
+<br>
+
+Current Set을 'val', 'test'로 하고 각각 'UP', 'DOWN'에 대하여 10개씩 캡쳐한다.
 
 
 # 학습

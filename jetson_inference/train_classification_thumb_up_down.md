@@ -18,6 +18,8 @@ aarch64/bin/ 혹은  tools/ 혹은 /usr/local/bin/ 에 camera-capture가 있다.
 
 ## 실행 준비
 
+docker에서 실행한다.
+
 실행하기 전에 다음을 준비한다.
 
 ```bash

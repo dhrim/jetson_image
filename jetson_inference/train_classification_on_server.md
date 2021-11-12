@@ -162,6 +162,8 @@ resnet18.onnx를 체크.
 
 jetson-inference / python / training / classification / models / cat_dog 로 카피.
 
+models/ 밑에 cat_dog 폴더를 만들고 카피해 준다.
+
 <br>
 
 ## 데이터 다운로드

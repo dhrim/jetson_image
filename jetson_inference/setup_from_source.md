@@ -21,6 +21,7 @@ $ sudo apt-get install git cmake libpython3-dev python3-numpy
 ## 프로젝트 다운로드
 
 ```bash
+$ cd
 $ git clone --recurse-submodules https://github.com/dusty-nv/jetson-inference
 $ cd jetson-inference
 ```

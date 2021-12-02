@@ -23,9 +23,8 @@ aarch64/bin/ 혹은  tools/ 혹은 /usr/local/bin/ 에 camera-capture가 있다.
 
 ```bash
 $ cd /jetson-inference/python/training/detection/ssd/data
-$ mkdir new_data
-$ echo "class_A
-class_B" > new_data/labels.txt
+$ mkdir cups
+$ echo "cup" > cups/labels.txt
 ```
 
 classification 처럼 
@@ -64,17 +63,13 @@ $ camera-capture csi://0
 옵션을 설정하고
 
 - Current Set : 'train'
-- Current Class : 'class_A'
+- Current Class : 'cup'
+
+'Save on Unfreeze'를 체크한다.
 
 버튼 'Freeze/Edit (space)'를 클릭한다. 
-
-화면상에서 레이블링하고 'Save (S)'를 클릭한다.
-
-<br>
-
-### 버그?
-
-새로 Freeze하면 레이블링이 안된다. 다시 Freeze해야 한다.
+화면상에서 레이블링한다.
+버튼 'Unfreeze'를 클릭한다. 클릭하면 자동으로 파일로 저장된다.
 
 <br>
 
@@ -117,7 +112,7 @@ Annotasions/20210903-231110.xml 내용
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>class_A</name>
+		<name>cup</name>
 		<pose>unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
@@ -147,4 +142,24 @@ ImageSets/Main/trainval.txt 내용
 ...
 ```
 
+## 학습
 학습할 때는 train-ssd.py를 사용한다.
+```
+$ python3 train_ssd.py --dataset-type=voc --data=data/cups --model-dir=models/cups
+```
+
+<br>
+
+## ONNX 포멧으로 변환
+```
+$ python3 onnx_export.py --model-dir=models/cups
+```
+
+## 탐지 실행
+```
+NET=models/cups
+
+detectnet --model=$NET/ssd-mobilenet.onnx --labels=$NET/labels.txt --input-blob=input_0 --output-cvg=scores --output-bbox=boxes csi://0
+```
+
+

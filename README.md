@@ -50,7 +50,7 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 - AWS 학습 환경 소개, Jupyter 소개
 - [AWS 서버에서 분류 학습](jetson_inference/train_classification_on_server.md)
 - [AWS 서버에서 물체 탐지 학습](jetson_inference/train_object_detection_on_server.md)
-- 커스텀 데이터 AWS 서버에서 분류 학습 : [데이터](data/flowers.zip)
+- 커스텀 데이터 AWS 서버에서 분류 학습 : [데이터](data/flowers_prepared.zip)
 
 <br>
 

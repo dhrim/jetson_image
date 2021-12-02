@@ -53,8 +53,8 @@ $ camera-capture csi://0
 다음 옵션을 설정한다.
 
 - Dataset Type : 'Detection'
-- Dataset Path : 'jetson-inference/python/training/detection/ssd/data/new_data'
-- Class Labels : 'jetson-inference/python/training/detection/ssd/data/new_data/labels.txt'
+- Dataset Path : '/jetson-inference/python/training/detection/ssd/data/cups'
+- Class Labels : '/jetson-inference/python/training/detection/ssd/data/cups/labels.txt'
 
 <br>
 
@@ -68,8 +68,16 @@ $ camera-capture csi://0
 'Save on Unfreeze'를 체크한다.
 
 버튼 'Freeze/Edit (space)'를 클릭한다. 
-화면상에서 레이블링한다.
-버튼 'Unfreeze'를 클릭한다. 클릭하면 자동으로 파일로 저장된다.
+
+화면상에서 박스를 레이블링한다.
+
+버튼 'Freeze/Edit (space)'를 클릭한다. 클릭하면 자동으로 파일로 저장된다.
+
+<br>
+
+Current Set을 'test'로 설정하고 최소 1개를 레이블링 한다.
+
+
 
 <br>
 
@@ -99,9 +107,9 @@ Annotasions/20210903-231110.xml 내용
 ```bash
 <annotaion>
 	<filename>20210903-231110.jpg</filename>
-	<folder>new_data</folder>
+	<folder>cups</folder>
 	<source>
-		<database>new_data></database>
+		<database>cups</database>
 		<annotation>custom</annotation>
 		<image>custom</image>
 	</source>
@@ -145,6 +153,7 @@ ImageSets/Main/trainval.txt 내용
 ## 학습
 학습할 때는 train-ssd.py를 사용한다.
 ```
+$ cd /jetson-inference/python/training/detection/ssd/
 $ python3 train_ssd.py --dataset-type=voc --data=data/cups --model-dir=models/cups
 ```
 

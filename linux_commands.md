@@ -215,7 +215,7 @@ $ cat file.txt
 
 ```
 # file.txt의 앞 10줄 보기
-$ head -10 file.txt
+$ head file.txt
 ```
 
 
@@ -223,7 +223,7 @@ $ head -10 file.txt
 
 ```
 # file.txt의 뒷 10줄 보기
-$ tail -10 file.txt
+$ tail file.txt
 ```
 
 

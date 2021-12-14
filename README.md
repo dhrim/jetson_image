@@ -13,12 +13,13 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 - Jetson-Inference 프로젝트 설치
     - [소스에서 빌드](jetson_inference/setup_from_source.md)
     - [docker 사용](jetson_inference/setup_by_docker.md)
-- 영상 분류 실습
-    - [분류(classificaiton)](jetson_inference/execute_classification.md)
 
 <br>
 
 ## 2일차
+- 영상 분류 실습
+    - [분류(classificaiton)](jetson_inference/execute_classification.md)
+
 - 물체 탐지 실습
     - [물체 탐지(object detection)](jetson_inference/execute_object_detection.md)
 

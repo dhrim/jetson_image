@@ -2,7 +2,7 @@
 
 -----
 # 분류 학습
-<br><br><br><br>
+<br><br>
 
 
 # cat_dog 분류 학습
@@ -47,10 +47,10 @@ dog
 
 ```bash
 $ cd /jetson-inference/python/training/classification
-$ python3 train.py --model-dir=models/cat_dog data/cat_dog
+$ python3 train.py --model-dir=models/cat_dog data/cat_dog --epochs=2
 ```
 
-epoch 당 7~8분, 35 epoch에 4시간
+epoch 당 7~8분 소요됨.
 
 모델 저장 위치는 
 

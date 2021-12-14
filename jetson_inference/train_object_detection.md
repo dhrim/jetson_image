@@ -1,7 +1,7 @@
 
 -----
 # 물체 탐지 학습
-<br><br><br><br>
+<br><br>
 
 
 # 물체 탐지 학습
@@ -64,10 +64,10 @@ data/fruit
 
 ```bash
 $ cd /jetson-inference/python/training/detection/ssd/
-$ python3 train_ssd.py --data=data/fruit --model-dir=models/fruit --batch-size=4 --epochs=30
+$ python3 train_ssd.py --data=data/fruit --model-dir=models/fruit --batch-size=4 --epochs=2
 ```
 
-epoch 당 7~8분, 35 epoch에 4시간
+epoch 당 7~8분 소요됨.
 
 모델 저장 위치는 
 

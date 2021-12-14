@@ -31,7 +31,7 @@ $ ./posenet.py images/humans_1.jpg images/test/human_1_pose.jpg
 $ ./posenet.py --network=resnet18-body images/humans_1.jpg images/test/human_1_pose.jpg
 ```
 
-model CLI 값
+network CLI 값
 | Model	| CLI argument	| NetworkType enum	| Keypoints |
 |-------|---------------|-------------------|-----------|
 | Pose-ResNet18-Body	| resnet18-body	| RESNET18_BODY	| 18 | 

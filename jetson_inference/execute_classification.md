@@ -34,7 +34,7 @@ $ ./imagenet.py --network=resnet-18 images/jellyfish.jpg images/test/output_jell
 
 모델 다운로드는 tools/download-models.sh로 할 수 있다.
 
-model CLI 값
+network CLI 값
 | Network | CLI argument |
 |---------|--------------|
 | AlexNet | alexnet |

@@ -31,7 +31,7 @@ $ ./segnet.py images/city_0.jpg images/test/output.jpg
 $ ./segnet.py --network=fcn-resnet18-cityscapes images/city_0.jpg images/test/output.jpg
 ```
 
-model CLI 값
+network CLI 값
 | Dataset	| Resolution	| CLI Argument	| Accuracy	| FPS	|
 |---------|-------------|---------------|-----------|-----|
 | Cityscapes	| 512x256	| fcn-resnet18-cityscapes-512x256	| 83.3%	| 48 FPS	|

@@ -31,7 +31,7 @@ $ ./detectnet.py images/peds_0.jpg images/test/output.jpg
 $ ./detectnet.py --network=ssd-mobilenet-v2 images/peds_0.jpg images/test/output.jpg
 ```
 
-model CLI 값
+network CLI 값
 | model | CLI argument | dataset |
 |-------|--------------|---------|
 | SSD-Mobilenet-v1 | ssd-mobilenet-v1 | 91 (COCO classes) |

@@ -32,7 +32,7 @@ $ tar xvfz fruit.tar.gz
 
 다음은 위 데이터의 원본이다. 시간 절약을 위해 위의 것으로 대신한다. 기록을 위해 남겨 둔다.
 ```bash
-$ python3 open_images_downloader.py --max-images=2500 --class-names "Apple,Orange,Banana,Strawberry,Grape,Pear,Pineapple,Watermelon" --data=data/fruit
+$ python open_images_downloader.py --max-images=2500 --class-names "Apple,Orange,Banana,Strawberry,Grape,Pear,Pineapple,Watermelon" --data=data/fruit
 ```
 
 파일 구조는 다음과 같다.
@@ -64,7 +64,7 @@ data/fruit
 
 ```bash
 $ cd /jetson-inference/python/training/detection/ssd/
-$ python3 train_ssd.py --data=data/fruit --model-dir=models/fruit --batch-size=4 --epochs=2
+$ python train_ssd.py --data=data/fruit --model-dir=models/fruit --batch-size=4 --epochs=2
 ```
 
 epoch 당 7~8분 소요됨.
@@ -83,7 +83,7 @@ epoch 당 7~8분 소요됨.
 ## ONNX 포멧으로 converting
 
 ```bash
-$ python3 onnx_export.py --model-dir=models/fruit
+$ python onnx_export.py --model-dir=models/fruit
 ```
 
 /jetson-inference/python/training/detection/models/fruit/ 아래에 

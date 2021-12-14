@@ -47,7 +47,7 @@ dog
 
 ```bash
 $ cd /jetson-inference/python/training/classification
-$ python3 train.py --model-dir=models/cat_dog data/cat_dog --epochs=2
+$ python train.py --model-dir=models/cat_dog data/cat_dog --epochs=2
 ```
 
 epoch 당 7~8분 소요됨.
@@ -67,7 +67,7 @@ epoch 당 7~8분 소요됨.
 ## ONNX 포멧으로 converting
 
 ```bash
-$ python3 onnx_export.py --model-dir=models/cat_dog
+$ python onnx_export.py --model-dir=models/cat_dog
 ```
 
 /jetson-inference/python/training/classification/models/cat_dog/ 아래에 

@@ -196,10 +196,7 @@ resnet18.onnx 파일이 생성된다.
 ## 분류 실행
 
 ```bash
-$ MODEL=models/plants
-$ DATASET=data/PlantCLEF_Subset
-
-$ imagenet.py --model=$MODEL/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cattail.jpg data/cattail.jpg
+$ imagenet.py --model=models/plants/resnet18.onnx --labels=data/PlantCLEF_Subset/labels.txt --input_blob=input_0 --output_blob=output_0 data/PlantCLEF_Subset/test/cattail.jpg data/cattail.jpg
 ```
 
 <br>

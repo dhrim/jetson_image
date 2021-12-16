@@ -25,8 +25,8 @@ docker에서 실행한다.
 ```bash
 $ cd /jetson-inference/python/training/classification/data
 $ mkdir thumb
-$ echo "UP" >>  thumb/labels.txt
 $ echo "DOWN" >>  thumb/labels.txt
+$ echo "UP" >>  thumb/labels.txt
 ```
 
 다음을 실행하여 파일 내용을 확인.

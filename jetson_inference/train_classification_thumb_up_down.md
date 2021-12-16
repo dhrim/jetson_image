@@ -122,10 +122,7 @@ resnet18.onnx 파일이 생성된다.
 ## 분류 실행
 
 ```bash
-$ MODEL=models/thumb
-$ DATASET=data/thumb
-
-$ imagenet.py --model=$MODEL/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt csi://0
+$ imagenet.py --model=models/thumb/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt csi://0
 ```
 <br>
 

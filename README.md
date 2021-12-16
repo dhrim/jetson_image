@@ -39,11 +39,11 @@ Jetson Nano에서 딥러닝을 사용한 이미지 처리 교육
 ## 3일차
 - [딥러닝의 이해](deep_learning_intro.pptx)
 - 영상 데이터 분류 실습
-    - 속성 데이터 IRIS 분류 : [dnn_iris_classification.ipynb](./deep_learning/dnn_iris_classification.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/jetson_image/blob/master/data/dnn_iris_classification.ipynb)
-    - 영상 데이터 MNIST 분류 : [dnn_mnist.ipynb](./deep_learning/dnn_mnist.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/jetson_image/blob/master/data/dnn_mnist.ipynb)
-    - 영상 데이터 MNIST 분류 - CNN : [cnn_mnist.ipynb](./deep_learning/cnn_mnist.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/jetson_image/blob/master/data/cnn_mnist.ipynb)
-    - 컬러 영상 데이터 CIFAR10 분류 - CNN : [cnn_cifar10.ipynb](./deep_learning/cnn_cifar10.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/jetson_image/blob/master/data/cnn_cifar10.ipynb)
-    - 전이학습 영상 분류 Template : [template_image_data_transfer_learning_classification.ipynb](./deep_learning/template_image_data_transfer_learning_classification.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/jetson_image/blob/master/data/template_image_data_transfer_learning_classification.ipynb)
+    - 속성 데이터 IRIS 분류 : [dnn_iris_classification.ipynb](./deep_learning/dnn_iris_classification.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/jetson_image/blob/master/deep_learning/dnn_iris_classification.ipynb)
+    - 영상 데이터 MNIST 분류 : [dnn_mnist.ipynb](./deep_learning/dnn_mnist.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/jetson_image/blob/master/deep_learning/dnn_mnist.ipynb)
+    - 영상 데이터 MNIST 분류 - CNN : [cnn_mnist.ipynb](./deep_learning/cnn_mnist.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/jetson_image/blob/master/deep_learning/cnn_mnist.ipynb)
+    - 컬러 영상 데이터 CIFAR10 분류 - CNN : [cnn_cifar10.ipynb](./deep_learning/cnn_cifar10.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/jetson_image/blob/master/deep_learning/cnn_cifar10.ipynb)
+    - 전이학습 영상 분류 Template : [template_image_data_transfer_learning_classification.ipynb](./deep_learning/template_image_data_transfer_learning_classification.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dhrim/jetson_image/blob/master/deep_learning/template_image_data_transfer_learning_classification.ipynb)
 
 <br>
 

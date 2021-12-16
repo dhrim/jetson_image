@@ -129,7 +129,7 @@ data/fruit
 
 ```bash
 $ cd ~/jetson-inference/python/training/detection/ssd/
-$ python3 train_ssd.py --data=data/fruit --model-dir=models/fruit --batch-size=4 --epochs=30
+$ python3 train_ssd.py --data=data/fruit --model-dir=models/fruit --batch-size=4 --epochs=100 --lr=0.001
 ```
 
 epoch 당 8초, 35 epoch에 5분 소요된다.

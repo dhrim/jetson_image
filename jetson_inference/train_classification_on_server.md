@@ -110,7 +110,7 @@ dog
 
 ```bash
 $ cd ~/jetson-inference/python/training/classification
-$ python3 train.py --model-dir=models/cat_dog data/cat_dog
+$ python3 train.py --model-dir=models/cat_dog data/cat_dog --epochs=100 --lr=0.001
 ```
 
 epoch 당 20초, 35 epoch에 12분 소여된다.

@@ -93,7 +93,7 @@ Current Set을 'val', 'test'로 하고 각각 'UP', 'DOWN'에 대하여 10개씩
 
 ```bash
 $ cd /jetson-inference/python/training/classification
-$ python3 train.py --model-dir=models/thumb data/thumb
+$ python3 train.py --model-dir=models/thumb data/thumb --epochs=35 --lr=0.001
 ```
 
 모델 저장 위치는 

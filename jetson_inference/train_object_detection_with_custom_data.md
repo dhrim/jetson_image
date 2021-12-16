@@ -154,7 +154,7 @@ ImageSets/Main/trainval.txt 내용
 학습할 때는 train-ssd.py를 사용한다.
 ```
 $ cd /jetson-inference/python/training/detection/ssd/
-$ python train_ssd.py --dataset-type=voc --data=data/cups --model-dir=models/cups
+$ python train_ssd.py --dataset-type=voc --data=data/cups --model-dir=models/cups  --epochs=35 --lr=0.001
 ```
 
 <br>

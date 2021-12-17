@@ -32,8 +32,8 @@ $ echo "UP" >>  thumb/labels.txt
 다음을 실행하여 파일 내용을 확인.
 ```
 $ cat thumb/labels.txt
-UP
 DOWN
+UP
 ```
 
 <br>

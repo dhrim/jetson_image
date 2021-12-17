@@ -63,7 +63,6 @@ $ camera-capture csi://0
 옵션을 설정하고
 
 - Current Set : 'train'
-- Current Class : 'cup'
 
 'Save on Unfreeze'를 체크한다.
 
